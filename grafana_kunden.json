@@ -1,0 +1,1119 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 3,
+          "displayName": "Umsatz",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 100,
+          "valueSize": 200
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'CloneOf/Orders/Category_Product_Orders'\nselect Revenue as Umsatz\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 3,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "percent",
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'CloneOf/Orders/Category_Product_Orders'\nselect Product,Revenue",
+          "refId": "A"
+        }
+      ],
+      "title": "Umsatz Produkt",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Label"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "palette-classic"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 2,
+      "options": {
+        "displayLabels": [
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "limit": 10,
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from 'Customer'\ngroup by Country\norder by Costumer_Count as long Desc\nselect count() as Costumer_Count, key() as Label",
+          "refId": "A"
+        }
+      ],
+      "title": "Übersicht Kunden",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": null
+              },
+              {
+                "color": "dark-yellow",
+                "value": 1000000
+              },
+              {
+                "color": "dark-red",
+                "value": 2000000
+              }
+            ]
+          },
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "id": 8,
+      "maxDataPoints": 1,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Company",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'Orders/Customer_Orders_Revenue'\norder by Revenue as long desc\nlimit 10",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "hide": false,
+          "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\ndeclare function Company(f) {\n    return f.Name + \" | \" + f.Country;\n    \n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect Company(c) as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash\nlimit 10",
+          "refId": "B"
+        }
+      ],
+      "title": "Top 10 Kunden: Umsatz",
+      "transformations": [
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Customer",
+                "Revenue",
+                "Company",
+                "Country",
+                "Street",
+                "Town",
+                "geohash"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "orientation": "horizontal",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "declare function Company(f) {\n    return f.Name + \" | \" + f.Country;\n    \n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\norder by ItemsPurchased as long  desc \nload o.Customer as c\nselect Company(c) as Company,\ncount() as NumberOfOrders, \nsum(o.Ordered[].Quantity) as ItemsPurchased\nLimit 10",
+          "refId": "A"
+        }
+      ],
+      "title": "Top 10: Orders vs. Items",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": 10
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 34
+      },
+      "id": 1,
+      "maxDataPoints": 1,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Basemap",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "blur": 11,
+              "radius": 6,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Kunden",
+            "opacity": 0.6,
+            "tooltip": true,
+            "type": "heatmap"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 49.962227,
+          "lon": 9.868022,
+          "zoom": 5
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect c.Name as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "hide": false,
+          "queryText": "from index 'Orders/Customer_Orders_Revenue'\nselect Revenue as \"Umsatz in €\"",
+          "refId": "B"
+        }
+      ],
+      "title": "Heatmap Kunden",
+      "transformations": [
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Company",
+                "Country",
+                "Street",
+                "Town",
+                "Umsatz in €",
+                "geohash"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1000000
+              },
+              {
+                "color": "red",
+                "value": 2000000
+              }
+            ]
+          },
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 9,
+      "maxDataPoints": 1,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Basemap",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "Revenue",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Layer 1",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 49.769413,
+          "lon": 14.083844,
+          "zoom": 5.45
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'Orders/Customer_Orders_Revenue'\norder by Revenue as long desc\nlimit 30",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "hide": false,
+          "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect c.Name as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash\nlimit 30",
+          "refId": "B"
+        }
+      ],
+      "title": "Top 30 Kunden: Umsatz",
+      "transformations": [
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Customer",
+                "Revenue",
+                "Company",
+                "Country",
+                "Street",
+                "Town",
+                "geohash"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": 1000
+              },
+              {
+                "color": "dark-orange",
+                "value": 5000
+              },
+              {
+                "color": "dark-red",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 48
+      },
+      "id": 6,
+      "maxDataPoints": 1,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Basemap",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "quantity",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "field": "quantity",
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "clamped"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Menge Verkaufter Waaren",
+            "opacity": 0.6,
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 49.962227,
+          "lon": 9.868022,
+          "zoom": 5
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'Auto/Orders/ByCountAndLines[].QuantityAndOrdered[].QuantityAndQuantityReducedByCustomer' as orders\nload Customer as c\nselect c.Name, c.Country, c.Geohash as geohash, orders.Ordered[].Quantity as quantity",
+          "refId": "A"
+        }
+      ],
+      "title": "Kunden: Anzahl Artikel",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "quantity"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "ravendb-datasource",
+        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": 100000
+              },
+              {
+                "color": "dark-orange",
+                "value": 500000
+              },
+              {
+                "color": "yellow",
+                "value": 1000000
+              },
+              {
+                "color": "red",
+                "value": 2000000
+              }
+            ]
+          },
+          "unit": "currencyEUR"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 48
+      },
+      "id": 7,
+      "maxDataPoints": 1,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Basemap",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "Umsatz in €",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "field": "Umsatz in €",
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "field": "Umsatz in €",
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "field": "",
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Umsatz",
+            "opacity": 0.6,
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 49.962227,
+          "lon": 9.868022,
+          "zoom": 5
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "queryText": "from index 'Auto/Orders/ByCountAndLines[].QuantityAndOrdered[].QuantityAndQuantityReducedByCustomer' as orders\nload Customer as c\nselect c.Name, c.Country, c.Geohash as geohash",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "ravendb-datasource",
+            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+          },
+          "hide": false,
+          "queryText": "from index 'Orders/Customer_Orders_Revenue'\nselect Revenue as \"Umsatz in €\"",
+          "refId": "B"
+        }
+      ],
+      "title": "Kunden: Umsatz",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "quantity"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "Umsatz in €"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "concatenate",
+          "options": {
+            "frameNameLabel": "frame",
+            "frameNameMode": "field"
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Name",
+                "Country",
+                "geohash",
+                "Umsatz in €"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Kunden Weltweit",
+  "uid": "b3fd0c06-7f8a-4956-a32a-09aaf581d4fa",
+  "version": 65,
+  "weekStart": ""
+}
