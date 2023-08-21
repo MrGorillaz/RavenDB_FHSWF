@@ -18,14 +18,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -73,14 +73,14 @@
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
-          "queryText": "from index 'CloneOf/Orders/Category_Product_Orders'\nselect Revenue as Umsatz\n",
+          "queryText": "from index 'Orders/Product_Orders_Revenue'\nselect Revenue as Umsatz",
           "refId": "A"
         }
       ],
@@ -90,7 +90,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -146,9 +146,9 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
-          "queryText": "from index 'CloneOf/Orders/Category_Product_Orders'\nselect Product,Revenue",
+          "queryText": "from index 'Orders/Category_Product_Revenue'\nselect Product,Revenue",
           "refId": "A"
         }
       ],
@@ -158,7 +158,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -230,7 +230,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "from 'Customer'\ngroup by Country\norder by Costumer_Count as long Desc\nselect count() as Costumer_Count, key() as Label",
           "refId": "A"
@@ -242,7 +242,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -326,7 +326,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "from index 'Orders/Customer_Orders_Revenue'\norder by Revenue as long desc\nlimit 10",
           "refId": "A"
@@ -334,7 +334,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "hide": false,
           "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\ndeclare function Company(f) {\n    return f.Name + \" | \" + f.Country;\n    \n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect Company(c) as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash\nlimit 10",
@@ -369,7 +369,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -446,7 +446,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "declare function Company(f) {\n    return f.Name + \" | \" + f.Country;\n    \n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\norder by ItemsPurchased as long  desc \nload o.Customer as c\nselect Company(c) as Company,\ncount() as NumberOfOrders, \nsum(o.Ordered[].Quantity) as ItemsPurchased\nLimit 10",
           "refId": "A"
@@ -458,7 +458,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -552,12 +552,12 @@
           "zoom": 5
         }
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect c.Name as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash",
           "refId": "A"
@@ -565,7 +565,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "hide": false,
           "queryText": "from index 'Orders/Customer_Orders_Revenue'\nselect Revenue as \"Umsatz in €\"",
@@ -599,7 +599,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -710,12 +710,12 @@
           "zoom": 5.45
         }
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "from index 'Orders/Customer_Orders_Revenue'\norder by Revenue as long desc\nlimit 30",
           "refId": "A"
@@ -723,7 +723,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "hide": false,
           "queryText": "declare function getStreet(f) {\n    return f.Street;\n}\n\ndeclare function getTown(f) {\n    return f.Town;\n}\n\nFrom \"Orders\" as o\ngroup by o.Customer\nload o.Customer as c\nselect c.Name as Company,\nc.Country as Country,\ngetStreet(c.Address) as Street,\ngetTown(c.Address) as Town,\nc.Geohash as geohash\nlimit 30",
@@ -758,7 +758,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -879,12 +879,12 @@
           "zoom": 5
         }
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "from index 'Auto/Orders/ByCountAndLines[].QuantityAndOrdered[].QuantityAndQuantityReducedByCustomer' as orders\nload Customer as c\nselect c.Name, c.Country, c.Geohash as geohash, orders.Ordered[].Quantity as quantity",
           "refId": "A"
@@ -910,7 +910,7 @@
     {
       "datasource": {
         "type": "ravendb-datasource",
-        "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+        "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
       },
       "fieldConfig": {
         "defaults": {
@@ -1037,12 +1037,12 @@
           "zoom": 5
         }
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "queryText": "from index 'Auto/Orders/ByCountAndLines[].QuantityAndOrdered[].QuantityAndQuantityReducedByCustomer' as orders\nload Customer as c\nselect c.Name, c.Country, c.Geohash as geohash",
           "refId": "A"
@@ -1050,7 +1050,7 @@
         {
           "datasource": {
             "type": "ravendb-datasource",
-            "uid": "d3bb5a48-33c2-465f-979c-0741fdf19256"
+            "uid": "a92f6d3f-c330-4917-979f-579450e3e268"
           },
           "hide": false,
           "queryText": "from index 'Orders/Customer_Orders_Revenue'\nselect Revenue as \"Umsatz in €\"",
@@ -1114,6 +1114,6 @@
   "timezone": "",
   "title": "Kunden Weltweit",
   "uid": "b3fd0c06-7f8a-4956-a32a-09aaf581d4fa",
-  "version": 65,
+  "version": 3,
   "weekStart": ""
 }

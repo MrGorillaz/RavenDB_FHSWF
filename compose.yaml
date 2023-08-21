@@ -1,0 +1,37 @@
+services:
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile_Grafana
+    image: "ravendb_grafana:dev"
+    
+    container_name: "grafana"
+
+    ports:
+      - "3000:3000"
+    networks:
+      - grafana-ravendb-network
+  
+  ravendb:
+    build:
+      context: .
+      dockerfile: Dockerfile_RavenDB
+    image: "myravendb:dev"
+    container_name: "ravendb"
+    ports:
+      - "8080:8080"
+      - "38888:38888"
+    
+    environment:
+      RAVEN_Setup_Mode: None
+      RAVEN_License_Eula_Accepted: true
+      RAVEN_Security_UnsecuredAccessAllowed: PrivateNetwork
+    
+    networks:
+      - grafana-ravendb-network
+
+networks:
+  grafana-ravendb-network:
+    name: grafana-ravendb-network
+    driver: bridge
+
