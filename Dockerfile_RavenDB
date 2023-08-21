@@ -1,14 +1,8 @@
 FROM ravendb/ravendb
-#ADD https://github.com/ravendb/ravendb-grafana-datasource/releases/download/v1.0.0/ravendb-datasource-1.0.0.zip /tmp
-#RUN wget https://github.com/MrGorillaz/RavenDB_FHSWF/blob/main/RavenDB.zip -P /opt/RavenDB/Server/
-#RUN apt-get update
-#run apt-get install unzip
 RUN apt-get update
 RUN apt-get install wget 
 RUN apt-get install unzip
-#ADD https://github.com/MrGorillaz/RavenDB_FHSWF/raw/main/RavenDB.zip /tmp/
 RUN wget https://github.com/MrGorillaz/RavenDB_FHSWF/raw/main/RavenDB.zip -P /tmp/ --no-check-certificate
-
 RUN unzip /tmp/RavenDB.zip -d /opt/RavenDB/Server/RavenData/
 EXPOSE 8080
 EXPOSE 38888
