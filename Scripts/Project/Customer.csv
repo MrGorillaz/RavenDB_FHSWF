@@ -1,0 +1,21 @@
+Id,Name,Country,Geohash,Address.Street,Address.ZIPCode,Address.Town,@metadata.@collection,@metadata.@id
+customer/c-01,Framework JEFF,AT,u2e7jgnf256k,Stockerauer Schnellstraße 2,3430,Perzendorf,Customer,customer/c-01
+customer/c-02,Coast Stitch,DE,u1m7mrcvcz2p,Moorstraße 6,49770,Dohren,Customer,customer/c-02
+customer/c-03,Lodges Slate,DE,u1n5t9hj8k34,Zur Grund 12,59964,Referinghausen,Customer,customer/c-03
+customer/c-04,School Studio,DE,u2bj5d7crdy6,Rosenweg 17,95326,Burghaig,Customer,customer/c-04
+customer/c-05,Wing Jones,DE,u30hne1gh904,Talstraße 17,06268,Schmon,Customer,customer/c-05
+customer/c-06,Anatomy FINE,DE,u33988kvdbc4,Dorfstraße 19,15831,Jühnsdorf,Customer,customer/c-06
+customer/c-07, nothing,DE,u0vpu18z2hf3,Kölner Straße 9,53424,Unkelbach,Customer,customer/c-07
+customer/c-08,Studio Magazine,DE,u0xjh8te7dhc,Sonnenrain 16,89555,Steinheim am Albuch,Customer,customer/c-08
+customer/c-09,Owners David,DE,u38bz0muw830,Ausbau 1,17194,Grabowhöfe,Customer,customer/c-09
+customer/c-10,Citizen cane,DE,u31ru1y69dxq,Markendorfer Waldsiedlung 22,14913,Markendorf,Customer,customer/c-10
+customer/c-11,Elephant Heartfelt,DE,u31ru1y69dxq,Markendorfer Waldsiedlung 22,14913,Markendorf,Customer,customer/c-11
+customer/c-12,Level Lavish,DE,u31ru1y69dxq,Markendorfer Waldsiedlung 22,14913,Markendorf,Customer,customer/c-12
+customer/c-13,Swamp Lively,DE,u31xc629gqtd,Merzdorf 42,15837,Merzdorf,Customer,customer/c-13
+customer/c-14,Coast Sprout,DE,u1j3fqh1n8mb,Im Laiengärtchen 4,51674,Weiershagen,Customer,customer/c-14
+customer/c-15,Landau Vanity,DE,u0vwgxcpu9rp,Korngasse 2,56412,Großholbach,Customer,customer/c-15
+customer/c-16,Cider Travelers,DE,u1j0zmyyws81,Zum alten Feld 10,53773,Niederhalberg,Customer,customer/c-16
+customer/c-17,Lavish Transcend,DE,u0vtchzrdw9c,Am Rudelsberg 15,56357,Geisig,Customer,customer/c-17
+customer/c-18,About Calm,DE,u1j3cdpfzjse,Weinland 23,51674,Drabenderhöhe,Customer,customer/c-18
+customer/c-19,Marmalade Quickly,DE,u1j01tpbevnp,Nachtigallenweg 21,53343,Pech,Customer,customer/c-19
+customer/c-20,Parsnips Tonight,DE,u1j2kbutv83s,Ringstraße 7,57638,Niederölfen,Customer,customer/c-20
